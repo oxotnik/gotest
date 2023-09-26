@@ -1,0 +1,193 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Реализовал простой микросервис,  посмотрел возможности gin\nПосмотрел orm gome,  подключил postgres, т.к. бд у меня была, то по подходу db first, сформировал модель в коде и заюзал простые методы работы с данными.\nДобавил swagger\nНастроил окружение на сервере и развернул тестовый микросервис.",
+        "title": "Go First Microservice test",
+        "contact": {
+            "name": "API Support",
+            "email": "vmatsiukhin@gmail.com"
+        },
+        "version": "1.0"
+    },
+    "paths": {
+        "/dashboard/test": {
+            "get": {
+                "description": "не реализован",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Метод тест - не реализован",
+                "operationId": "dashboard-test",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/get-user-from-id/{id}": {
+            "get": {
+                "description": "Получить пользователя по ИД",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Получение пользователя по Id",
+                "operationId": "get-user-from-id",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.UserInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/get-users/": {
+            "get": {
+                "description": "Получить пользователя по ИД",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "Получение списка пользователей",
+                "operationId": "get-users",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Limit",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Page",
+                        "name": "page",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.UserInfo"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "model.UserInfo": {
+            "type": "object",
+            "properties": {
+                "IP": {
+                    "type": "string"
+                },
+                "changer_id": {
+                    "type": "integer"
+                },
+                "creater_id": {
+                    "type": "integer"
+                },
+                "date_create": {
+                    "type": "string"
+                },
+                "date_last_change": {
+                    "type": "string"
+                },
+                "date_last_online": {
+                    "type": "string"
+                },
+                "date_of_birth": {
+                    "type": "string"
+                },
+                "date_register": {
+                    "type": "string"
+                },
+                "date_started": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "first_name": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "id_status": {
+                    "type": "integer"
+                },
+                "is_archive": {
+                    "type": "boolean"
+                },
+                "is_blocked": {
+                    "type": "boolean"
+                },
+                "is_new_password": {
+                    "type": "boolean"
+                },
+                "is_online": {
+                    "type": "boolean"
+                },
+                "is_user": {
+                    "type": "boolean"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "middle_name": {
+                    "type": "string"
+                },
+                "org_structure_id": {
+                    "type": "integer"
+                },
+                "phone": {
+                    "type": "string"
+                },
+                "photo": {
+                    "type": "string"
+                },
+                "photo_full": {
+                    "type": "string"
+                },
+                "position_id": {
+                    "type": "integer"
+                },
+                "sex": {
+                    "type": "boolean"
+                },
+                "user_name": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
